@@ -11,7 +11,15 @@
         session_destroy();
         header("Location: login.php");
     }
-
+    if (isset($_POST['DeleteTask'])){
+        $sqlDelete = $cnx->prepare("DELETE FROM Task WHERE idTask = ?");
+        $sqlDelete->execute([$_POST['TaskId']]);
+        header("Refresh:0");
+    }
+    if (isset($_POST['ModifyTask'])){
+        $_SESSION['taskId'] = $_POST['TaskId'];
+        header('location: ModifyTask.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,8 +38,6 @@
         <ol class="navigation flex flex-row gap-4">
             <a href="./index.php"><li>Home</li></a>
             <a href="./AddTask.php"><li>Add Task</li></a>
-            <a href="#"><li>about</li></a>
-            <a href="#"><li>Contact us</li></a>
         </ol>
         <form method="post">
             <button id="logoutBtn" class="bg-white text-[#007DFE] border-2 border-[#007DFE] p-2 rounded-lg" type="submit" name="logout">logout</button>
@@ -49,7 +55,7 @@
             <div class="content flex flex-row items-center justify-between gap-4">
                 <span class="desc">'.$res['Description'].'</span>
                 <form method="post">
-                    <input type="text" name="TaskId" value="'.$res['idTask'].'"> 
+                    <input type="hidden" name="TaskId" value="'.$res['idTask'].'"> 
                     <button id="selectionBtn" name="DeleteTask" type="submit" class="submit border-2 border-black rounded-full p-2">
                         <img src="./assets/Icons/delete.png" alt="delete" width="26px" height="26px">
                     </button>
@@ -65,15 +71,7 @@
         </div>
             ';
         }
-        if (isset($_POST['DeleteTask'])){
-            $sqlDelete = $cnx->prepare("DELETE FROM Task WHERE idTask = ?");
-            $sqlDelete->execute([$_POST['TaskId']]);
-            header("Refresh:0");
-        }
-        if (isset($_POST['ModifyTask'])){
-            $_SESSION['taskId'] = $_POST['TaskId'];
-            header('Location: ./ModifyTask.php');
-        }
+
     ?>
     </section>
 </body>

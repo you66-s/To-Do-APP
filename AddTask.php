@@ -22,8 +22,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Task</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="./js/verifie.js"></script>
     <link rel="stylesheet" href="./Style/AddTask.css">
+
 </head>
 <body>
     <nav class="flex flex-row items-center justify-between">
@@ -40,17 +40,17 @@
                 <button class="bg-white text-[#007DFE] border-2 border-[#007DFE] p-2 rounded-lg" type="submit" name="logout">logout</button>
             </form>
     </nav>
-    <form method="post" class="taskForm border-2 border-[#007DFE] flex flex-col gap-4 items-center w-1/2 rounded-lg p-4">
+    <form method="post" onsubmit="return formValidation()" class="taskForm border-2 border-[#007DFE] flex flex-col gap-4 items-center w-1/2 rounded-lg p-4">
         <div class="inputs flex flex-col gap-2 w-full">
             <label >Title</label>
             <span class="w-full border-2 rounded-lg p-2">
-                <input type="text" name="taskTitle" class="inpt w-full">
+                <input type="text" id="taskTitle" name="taskTitle" class="inpt w-full">
             </span>
         </div>
         <div class="inputs flex flex-col gap-2 w-full">
             <label >Date</label>
             <span class="w-full border-2 rounded-lg p-2">
-                <input type="date" name="taskDate" class="inpt w-full">
+                <input type="date" id="taskDate" name="taskDate" class="inpt w-full">
             </span>
         </div>
         <div class="inputs flex flex-col gap-2 w-full">
@@ -76,9 +76,9 @@
                 <textarea name="taskDesc" id="descArea" class="w-full" placeholder="start writing here"></textarea>
             </span>
         </div>
-        <button type="submit" class="bg-[#007DFE] text-white p-2 rounded-lg" name="addTask">Add Task</button>
+        <button type="submit" onclick="taskVerification()" class="bg-[#007DFE] text-white p-2 rounded-lg" name="addTask">Add Task</button>
+        <span style="color: red" id="taskError"></span>
         <?php
-            $result = "";
             if (isset($_POST['addTask'])) {
                 $sqlAdd = $cnx->prepare("INSERT INTO task (title, date, Priority, Description, idUser) VALUES ('$titleT', '$dateT', '$prriorT', '$descT', '$idUser')");
                 $sqlAdd->execute();
@@ -86,6 +86,6 @@
             }
         ?>
     </form>
-    
+    <script src="js/TaskAdd.js"></script>
 </body>
 </html>

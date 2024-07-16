@@ -30,8 +30,8 @@
     <title>Modify Task</title>
 
 </head>
-<body>
-<form method="post" class="taskForm border-2 border-[#007DFE] flex flex-col gap-4 items-center w-1/2 rounded-lg p-4">
+<body onload="all()">
+<form method="post" onsubmit="return formValidation()" class="taskForm border-2 border-[#007DFE] flex flex-col gap-4 items-center w-1/2 rounded-lg p-4">
     <?php
         $sqlDisplay = $cnx->prepare("SELECT * FROM task WHERE idTask = ?");
         $result = $sqlDisplay->execute([$idTask]);
@@ -40,13 +40,13 @@
     <div class="inputs flex flex-col gap-2 w-full">
         <label >Title</label>
         <span class="w-full border-2 rounded-lg p-2">
-                <input type="text" value="<?php echo @$fetch['title']; ?>" name="taskTitle" class="inpt w-full">
+                <input type="text" id="tTitle" value="<?php echo @$fetch['title']; ?>" name="taskTitle" class="inpt w-full">
             </span>
     </div>
     <div class="inputs flex flex-col gap-2 w-full">
         <label >Date</label>
         <span class="w-full border-2 rounded-lg p-2">
-                <input type="date" name="taskDate" class="inpt w-full">
+                <input type="date" id="tDate" name="taskDate" class="inpt w-full">
             </span>
     </div>
     <div class="inputs flex flex-col gap-2 w-full">
@@ -72,7 +72,9 @@
                 <textarea name="taskDesc" id="descArea" class="w-full" placeholder="start writing here"></textarea>
             </span>
     </div>
-    <button type="submit" class="bg-[#007DFE] text-white p-2 rounded-lg" name="addTask">Update Task Task</button>
+    <button type="submit" onclick="taskVerification()" class="bg-[#007DFE] text-white p-2 rounded-lg" name="addTask">Update Task</button>
+    <span style="color: red" id="taskError"></span>
 </form>
+<script src="js/Modify.js"></script>
 </body>
 </html>

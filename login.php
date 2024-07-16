@@ -56,7 +56,7 @@
                         }
                     }
                 ?>
-                <span id="textAcc">Don't have an account?<a href="./signup.php" class="text-[#007DFE]"> Create one</a></span>
+                <span id="textAcc">Don't have an account?<a href="./signup.php" class="text-[#007DFE]"> Signup</a></span>
             </div>
             <img src="./assets/Images/login.jpg" alt="login" width="400px" height="400px">
         </div>

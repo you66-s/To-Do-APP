@@ -9,47 +9,54 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-<form method="post">
+<form method="post" onsubmit="return formValidation()">
     <div class="box w-1/2 flex flex-row bg-white border-2 p-4 rounded-lg items-center">
     <img src="./assets/Images/signup.jpg" alt="signup" width="400px" height="400px">
             <div class="inputs flex flex-col w-1/2 gap-6">
                 <div class="fname">
                     <span class="flex flex-row gap-4 items-center p-2 border-2 rounded-lg w-full">
                         <img src="./assets/Icons/userIcon.png" alt="user" width="16px" height="16px">
-                        <input class="w-full" id="inptFoc" type="text" name="fname" placeholder="Enter first name"> 
+                        <input class="ipt w-full" id="fname" type="text" name="fname" placeholder="Enter first name">
                     </span>
+                    <span style="color: red" id="fnameError"></span>
                 </div>
                 <div class="lname">
                     <span class="flex flex-row gap-4 items-center p-2 border-2 rounded-lg w-full">
                         <img src="./assets/Icons/userIcon.png" alt="pwd" width="16px" height="16px">
-                        <input class="w-full" id="inptFoc" name="lname" type="text" placeholder="Enter last name"> 
+                        <input class="ipt w-full" id="lname" name="lname" type="text" placeholder="Enter last name">
                     </span>
+                    <span style="color: red" id="lnameError"></span>
                 </div>
                 <div class="username">
                     <span class="flex flex-row gap-4 items-center p-2 border-2 rounded-lg w-full">
                         <img src="./assets/Icons/userIcon.png" alt="pwd" width="16px" height="16px">
-                        <input class="w-full" id="inptFoc" name="Uname" type="text" placeholder="Enter username"> 
+                        <input class="ipt w-full" id="uname" name="Uname" type="text" placeholder="Enter username">
                     </span>
+                    <span style="color: red" id="unameError"></span>
                 </div>
                 <div class="email">
                     <span class="flex flex-row gap-4 items-center p-2 border-2 rounded-lg w-full">
                         <img src="./assets/Icons/email.png" alt="pwd" width="16px" height="16px">
-                        <input class="w-full" id="inptFoc" name="email" type="email" placeholder="Enter email"> 
+                        <input class="w-full" id="email" name="email" type="email" placeholder="Enter email">
                     </span>
+                    <span style="color: red" id="emlError"></span>
                 </div>
                 <div class="password">
                     <span class="flex flex-row gap-4 items-center p-2 border-2 rounded-lg w-full">
                         <img src="./assets/Icons/lock.png" alt="pwd" width="16px" height="16px">
-                        <input class="w-full" id="inptFoc" name="pwd" type="password" placeholder="Enter password"> 
+                        <input class="ipt w-full" id="pwd" name="pwd" type="password" placeholder="Enter password">
                     </span>
+                    <span style="color: red" id="pwdError"></span>
                 </div>
+
                 <div class="confPass">
                     <span class="flex flex-row gap-4 items-center p-2 border-2 rounded-lg w-full">
                         <img src="./assets/Icons/lock.png" alt="pwd" width="16px" height="16px">
-                        <input class="w-full" id="inptFoc" name="confPwd" type="password" placeholder="Confirm your password"> 
+                        <input class="ipt w-full" id="confPwd" name="confPwd" type="password" placeholder="Confirm your password">
                     </span>
+                    <span style="color: red"  id="confPwdError"></span>
                 </div>
-                <button type="submit" class="loginBtn bg-[#007DFE] text-white p-2 rounded-lg" name="signup">sign up</button>
+                <button type="submit" onsubmit="testFields()" class="loginBtn bg-[#007DFE] text-white p-2 rounded-lg" name="signup">sign up</button>
                 <?php
                     include 'connexion.php';
                     @$fname = $_POST['fname'];
@@ -80,6 +87,6 @@
             </div>
         </div>
 </form>
-
+<script src="./js/signupVerification.js"></script>
 </body>
 </html>

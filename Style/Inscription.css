@@ -3,7 +3,7 @@ body{
     padding: 0;
     background-color: #007DFE;
 }
-input#inptFoc:focus{
+input.ipt:focus{
     outline: none;
 }
 form{

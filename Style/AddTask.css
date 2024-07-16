@@ -23,3 +23,6 @@ Textarea#descArea:focus{
 span#successP{
     color: green;
 }
+span#taskError{
+    color: red;
+}
