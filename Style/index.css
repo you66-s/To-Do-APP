@@ -1,0 +1,15 @@
+body{
+    margin: 0;
+    padding: 0;
+}
+li:hover{
+    border-bottom: solid 2px #007DFE;
+}
+form > button#logoutBtn:hover{
+    background-color: #007DFE;
+    color: white;
+}
+section.taskContainer{
+    margin-left: auto;
+    margin-right: auto;
+}

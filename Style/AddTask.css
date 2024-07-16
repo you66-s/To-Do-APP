@@ -1,0 +1,25 @@
+body{
+    margin: 0;
+    padding: 15px;
+}
+li:hover{
+    border-bottom: solid 2px #007DFE;
+}
+nav > form > button:hover{
+    background-color: #007DFE;
+    color: white;
+}
+form.taskForm{
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+input.inpt:focus{
+    outline: none;
+}
+Textarea#descArea:focus{
+    outline: none;
+}
+span#successP{
+    color: green;
+}
